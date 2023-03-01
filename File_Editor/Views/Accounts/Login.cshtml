@@ -1,0 +1,33 @@
+﻿@{
+    string alerttype = ViewBag.AlertType ?? "danger";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <h4 class="card-header">Sign in</h4>
+            <div class="card-body">
+                @if (ViewBag.Error != null)
+                {
+                    <p class="alert alert-@alerttype">@ViewBag.Error</p>
+                }
+
+                <form method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="usericon">person</span>
+                        <input name="username" class="form-control" placeholder="Username" type="text" aria-label="Username" aria-describedby="usericon">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="passwordicon">lock</span>
+                        <input name="password" class="form-control" placeholder="Password" type="password" aria-describedby="passwordicon">
+                    </div>
+                    <div class="mb-3">
+                        <input type="submit" class="btn btn-primary btn-block" value="Log in" />
+                        <a asp-action="Register" class="btn btn-block">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
