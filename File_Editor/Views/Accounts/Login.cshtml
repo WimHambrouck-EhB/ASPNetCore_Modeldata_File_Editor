@@ -1,5 +1,5 @@
 ﻿@{
-    string alerttype = ViewBag.AlertType ?? "danger";
+    string alerttype = ViewBag.AlertType ?? "info";
 }
 
 <br />
@@ -15,16 +15,16 @@
 
                 <form method="post">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="usericon">person</span>
+                        <span class="material-icons input-group-text" id="usericon">person</span>
                         <input name="username" class="form-control" placeholder="Username" type="text" aria-label="Username" aria-describedby="usericon">
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="passwordicon">lock</span>
+                        <span class="material-icons input-group-text" id="passwordicon">lock</span>
                         <input name="password" class="form-control" placeholder="Password" type="password" aria-describedby="passwordicon">
                     </div>
-                    <div class="mb-3">
-                        <input type="submit" class="btn btn-primary btn-block" value="Log in" />
-                        <a asp-action="Register" class="btn btn-block">Register</a>
+                    <div class="d-flex">
+                        <input type="submit" class="btn btn-primary flex-grow-1" value="Log in" />
+                        <a asp-action="Register" class="btn btn-outline-secondary flex-grow-1 ms-1">Register</a>
                     </div>
                 </form>
             </div>
