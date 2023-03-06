@@ -6,7 +6,7 @@ namespace File_Editor.Controllers
     public class AccountsController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
-
+        public static string SimpleName => nameof(FilesController).Replace("Controller", "");
         public static Dictionary<string, string> Users { get; } = new()
         {
             { "Wim", "123" },
@@ -57,9 +57,9 @@ namespace File_Editor.Controllers
                 // bestaande gebruiker, dus lokaal pad naar hun bestanden opvragen, dit opslaan in de sessie en vervolgens doorsturen naar de file manager (/File/Manager)
                 var userPath = GetUserPath(_webHostEnvironment, username);
                 HttpContext.Session.SetString(FilesController.KEY_SESSION_USER_PATH, userPath);
-                return RedirectToAction("Manager", "Files"); //TODO
+                return RedirectToAction(nameof(FilesController.Manager), FilesController.SimpleName);
             }
-
+    
             return View();
         }
 
@@ -96,7 +96,7 @@ namespace File_Editor.Controllers
                     // map bestaat nog niet, dus we maken het aan, slaan het pad op in de sessie en sturen de gebruiker door naar de file manager (/Files/Manage)
                     Directory.CreateDirectory(userPath);
                     HttpContext.Session.SetString(FilesController.KEY_SESSION_USER_PATH, userPath);
-                    return RedirectToAction("Manager", "Files"); //TODO
+                    return RedirectToAction(nameof(FilesController.Manager), FilesController.SimpleName);
                 }
             }
 
