@@ -1,5 +1,38 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = $"File manager – {ViewBag.Username}";
 }
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>New file</h3>
+@if (ViewBag.Error != null)
+{
+    <p class="alert alert-danger">@ViewBag.Error</p>
+}
+
+<form action="Create" method="post">
+    <div class="row g-2 mb-3">
+        <div class="col-auto">
+            <label class="visually-hidden" for="filename">Filename</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="filename" placeholder="Filename" name="filename">
+                <span class="input-group-text">.txt</span>
+            </div>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </div>
+</form>
+<h3>Existing file(s)</h3>
+<form method="get">
+    <div class="mb-3">
+        <select class="form-select" name="filename" size="5" asp-items="new SelectList(ViewBag.Files)"></select>
+    </div>
+    <button type="submit" class="btn btn-light d-inline-flex">
+        <i class="material-icons me-1">edit</i>Edit
+    </button>
+    <button type="submit" class="btn btn-danger d-inline-flex">
+        <i class="material-icons me-1">delete</i>Delete
+    </button>
+</form>
