@@ -29,10 +29,10 @@
     <div class="mb-3">
         <select class="form-select" name="filename" size="5" asp-items="new SelectList(ViewBag.Files)"></select>
     </div>
-    <button type="submit" class="btn btn-light d-inline-flex">
+    <button type="submit" asp-action="Edit" class="btn btn-light d-inline-flex">
         <i class="material-icons me-1">edit</i>Edit
     </button>
-    <button type="submit" class="btn btn-danger d-inline-flex">
+    <button type="submit" asp-action="Delete" class="btn btn-danger d-inline-flex">
         <i class="material-icons me-1">delete</i>Delete
     </button>
 </form>

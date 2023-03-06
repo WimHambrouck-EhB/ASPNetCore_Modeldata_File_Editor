@@ -1,5 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using File_Editor.Controllers;
+
 @{
+    ViewData["Title"] = ViewBag.FileName;
 }
+
+<h2>@ViewData["Title"]</h2>
+@if (TempData[FilesController.KEY_MESSAGE] is string bericht)
+{
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        @bericht
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@* Geen action op de form, wel op de individuele knoppen, omdat er verschillende acties mogelijk zijn *@
+<form method="post">
+    <div class="mb-3">
+        <textarea name="filecontent" rows="20" class="form-control">@ViewBag.Inhoud</textarea>
+    </div>
+    <div class="mb-3">
+        <input type="hidden" value="@ViewBag.Filename" name="filename" />
+        <button type="submit" asp-action="Save" class="btn btn-light d-inline-flex">
+            <i class="material-icons me-1">save</i>Save
+        </button>
+        <a asp-action="Manager" class="btn btn-danger d-inline-flex">
+            <i class="material-icons me-1">close</i>Cancel
+        </a>
+        <button type="submit" asp-action="SaveAndQuit" class="btn btn-primary d-inline-flex">
+            <i class="material-icons me-1">exit_to_app</i>Save &amp; Quit
+        </button>
+    </div>
+</form>
+
+
+<script type="text/javascript">
+    setTimeout(function () {
+        $('.alert').alert('close');
+    }, 2500);
+</script>

@@ -9,7 +9,7 @@ namespace File_Editor.Controllers
         public const string KEY_SESSION_USER_PATH = "_UserPath";
         private const string KEY_ERROR_SESSION = "_SessionError";
         private const string KEY_ERROR_FILE = "_FileError";
-        private const string KEY_MESSAGE = "Message";
+        public const string KEY_MESSAGE = "Message";
 
         public static string SimpleName => nameof(FilesController).Replace("Controller", "");
 
