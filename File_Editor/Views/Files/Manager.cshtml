@@ -10,7 +10,7 @@
     <p class="alert alert-danger">@ViewBag.Error</p>
 }
 
-<form action="Create" method="post">
+<form asp-action="Create" method="post">
     <div class="row g-2 mb-3">
         <div class="col-auto">
             <label class="visually-hidden" for="filename">Filename</label>
@@ -24,6 +24,7 @@
         </div>
     </div>
 </form>
+
 <h3>Existing file(s)</h3>
 <form method="get">
     <div class="mb-3">
