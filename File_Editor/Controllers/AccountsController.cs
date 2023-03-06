@@ -7,7 +7,7 @@ namespace File_Editor.Controllers
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        private readonly Dictionary<string, string> users = new()
+        public static Dictionary<string, string> Users { get; } = new()
         {
             { "Wim", "123" },
             { "Jan", "456" },
@@ -15,6 +15,7 @@ namespace File_Editor.Controllers
         };
 
         public const string KEY_SESSION_ERROR = "_SessionError";
+        public const string USERFOLDER = "\\userfiles\\";
 
         public AccountsController(IWebHostEnvironment webHostEnvironment)
         {
@@ -47,7 +48,7 @@ namespace File_Editor.Controllers
             {
                 ViewBag.Error = "Username invalid.";
             }
-            else if (!(users.TryGetValue(username, out string? savedPassword) && savedPassword == password)) // check of gebruiker bestaat in users Dictionary, indien ja: wachtwoord ophalen en checken of dit correct is
+            else if (!(Users.TryGetValue(username, out string? savedPassword) && savedPassword == password)) // check of gebruiker bestaat in users Dictionary, indien ja: wachtwoord ophalen en checken of dit correct is
             {
                 ViewBag.Error = "Username or password incorrect.";
             }
@@ -111,7 +112,7 @@ namespace File_Editor.Controllers
         /// <returns>Absoluut pad naar userfiles van specifieke gebruiker</returns>
         private static string GetUserPath(IWebHostEnvironment webHostEnvironment, string username)
         {
-            return webHostEnvironment.WebRootPath + "\\userfiles\\" + username;
+            return webHostEnvironment.WebRootPath + USERFOLDER + username;
         }
     }
 }
