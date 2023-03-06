@@ -44,7 +44,7 @@ namespace File_Editor.Controllers
             {
                 ViewBag.Error = "Please fill out both fields.";
             }
-            else if (!username.IsValidFileOrDirName()) // zie: ExtensionMethods
+            else if (!username.IsValidUserName()) // zie: ExtensionMethods
             {
                 ViewBag.Error = "Username invalid.";
             }
@@ -77,7 +77,7 @@ namespace File_Editor.Controllers
             {
                 ViewBag.Error = "Please fill in a username";
             }
-            else if (!username.IsValidFileOrDirName()) // zie: Extensions
+            else if (!username.IsValidUserName()) // zie: Extensions
             {
                 ViewBag.Error = "Username invalid.";
             }

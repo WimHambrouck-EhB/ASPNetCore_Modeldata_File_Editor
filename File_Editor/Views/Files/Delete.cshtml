@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Delete file";
+}
+
+<h2>@ViewData["Title"]</h2>
+<h3>Are you sure you want to delete @ViewBag.Filename?</h3>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="filename" value="@ViewBag.Filename" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Manager" class="btn btn-light">Cancel</a>
+</form>

@@ -40,7 +40,7 @@ namespace File_Editor.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(string filename)
         {
-            if (!filename.IsValidFileOrDirName()) // zie: ExtensionMethods
+            if (!filename.IsValidUserName()) // zie: ExtensionMethods
             {
                 // als bestandsnaam niet correct is, terugsturen naar /Manager waar dan een foutmelding zal verschijnen
                 TempData[KEY_ERROR_FILE] = "Invalid file name!";

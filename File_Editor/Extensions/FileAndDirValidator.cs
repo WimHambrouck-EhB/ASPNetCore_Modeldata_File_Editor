@@ -8,7 +8,7 @@
         /// </summary>
         /// <param name="invoer">Te controleren invoer.</param>
         /// <returns>true als aan de voorwaarden voldaan is, anders false</returns>
-        public static bool IsValidFileOrDirName(this string invoer)
+        public static bool IsValidUserName(this string invoer)
         {
             if (string.IsNullOrEmpty(invoer))
                 return false;
